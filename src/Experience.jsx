@@ -1,4 +1,4 @@
-import { Environment, OrbitControls, useGLTF, Lightformer, Float, AccumulativeShadows, RandomizedLight } from '@react-three/drei';
+import { Environment, OrbitControls, useGLTF, Lightformer, Float, AccumulativeShadows, RandomizedLight, ScrollControls, useScroll, useAnimations } from '@react-three/drei';
 import { useEffect, useRef } from 'react';
 import Whiskey from './whiskey.jsx';
 import Particles from './Particle.jsx';
@@ -14,17 +14,17 @@ import Godzilla from './godzilla.jsx';
 import Magic from './3d-magic.jsx';
 import SunGlass from './sunGlass.jsx';
 import ShoesNike from './shoesNike.jsx';
+import { useFrame } from '@react-three/fiber';
+import { Group } from 'three';
 
 export default function Experience() {
-    const modelRef = useRef();
-
     return (
         <>
             <ambientLight intensity={1} position={[1, 2, 3]} />
             {/* <directionalLight castShadow intensity={10} position={[1, 2, 3]} /> */}
             <color attach="background" args={['#f0f0f0']} /> 
 
-            <OrbitControls />
+            {/* <OrbitControls /> */}
 
             {/* <Particles /> */}
 
@@ -32,11 +32,11 @@ export default function Experience() {
             <CameraRig>
 
             {/* Bmw Model */}
-            <Bmw castShadow/>
+            {/* <Bmw castShadow/> */}
 
             {/* Bike Model */}
-            {/* <Bike scale={[2, 2, 2]} position={[-0.5, -1.5, 0.5]} rotation={[-0.2, 0, 0]} /> */}
-
+            <Bike scale={[2, 2, 2]} position={[-0.5, -1.5, 0.5]} rotation={[-0.2, 0, 0]} />
+            
             {/* Godzilla Model */}
             {/* <Godzilla scale={[0.1, 0.1, 0.1]} position={[-0.5, -2.5, 0.5]} rotation={[-0.1, 0.4, 0]}/> */}
 

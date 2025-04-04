@@ -16,7 +16,7 @@ export default function CameraAnimation() {
     })
 
     useGSAP(() => {
-        const tl = gsap.timeline()
+        const tl = gsap.timeline() 
 
         tl.fromTo(
             camera.position,
