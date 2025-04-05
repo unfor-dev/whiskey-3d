@@ -6,6 +6,7 @@ import Header from './Header.jsx'
 import Main from './Main.jsx'
 import { useState } from 'react'
 import Main2 from './Main-2.jsx'
+import { useAnimationStore } from './store.jsx';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 

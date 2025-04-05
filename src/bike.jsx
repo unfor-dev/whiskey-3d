@@ -9,32 +9,35 @@ Title: Carbon Frame Bike
 import React, { useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useEffect } from 'react'
+import * as THREE from 'three'
+import { useState } from 'react'
+import { useCallback } from 'react'
+import { useAnimationStore } from './store'
 
 export default function Bike(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/carbon_frame_bike.glb')
   const { actions } = useAnimations(animations, group)
+  // Button Animate Start
+  const playBikeAnimation = useAnimationStore((state) => state.playBikeAnimation)
+  const resetBikeAnimation = useAnimationStore((state) => state.resetBikeAnimation)
 
   useEffect(() => {
-    // Initial 5 second delay
-    const initialDelay = setTimeout(() => {
-      // Play all animations once
+    if (playBikeAnimation) {
       Object.values(actions).forEach((action) => {
-        action.reset().play()
+        action.reset()
+        action.setLoop(THREE.LoopOnce)
+        action.clampWhenFinished = true
+        action.play()
       })
 
-      // Set up interval to play every minute (60000ms)
-      const interval = setInterval(() => {
-        Object.values(actions).forEach((action) => {
-          action.reset().play()
-        })
-      }, 600000)
-
-      return () => clearInterval(interval)
-    }, 5000)
-
-    return () => clearTimeout(initialDelay)
-  }, [actions])
+      // Reset trigger after playing
+      setTimeout(() => {
+        resetBikeAnimation()
+      }, 1000)
+    }
+  }, [playBikeAnimation])
+  // Button Animate End
 
   return (
     <group ref={group} {...props} dispose={null}>

@@ -1,4 +1,4 @@
-import { Environment, OrbitControls, useGLTF, Lightformer, Float, AccumulativeShadows, RandomizedLight, ScrollControls, useScroll, useAnimations } from '@react-three/drei';
+import { Environment, OrbitControls, useGLTF, Lightformer, Float, AccumulativeShadows, RandomizedLight, ScrollControls, useScroll, useAnimations, Html } from '@react-three/drei';
 import { useEffect, useRef } from 'react';
 import Whiskey from './whiskey.jsx';
 import Particles from './Particle.jsx';
@@ -16,10 +16,19 @@ import SunGlass from './sunGlass.jsx';
 import ShoesNike from './shoesNike.jsx';
 import { useFrame } from '@react-three/fiber';
 import { Group } from 'three';
+import { useAnimationStore } from './store.jsx';
 
 export default function Experience() {
+    // Button Click animate
+    const triggerBikeAnimation = useAnimationStore((state) => state.triggerBikeAnimation)
     return (
         <>
+            {/* Button click animate */}
+            <Html position={[0, 2, 0]} center>
+                <button onClick={triggerBikeAnimation}>🚴‍♂️ Bosish</button>
+            </Html>
+
+
             <ambientLight intensity={1} position={[1, 2, 3]} />
             {/* <directionalLight castShadow intensity={10} position={[1, 2, 3]} /> */}
             <color attach="background" args={['#f0f0f0']} /> 
@@ -27,6 +36,7 @@ export default function Experience() {
             {/* <OrbitControls /> */}
 
             {/* <Particles /> */}
+            
 
             {/* Kamera harakati */}
             <CameraRig>
