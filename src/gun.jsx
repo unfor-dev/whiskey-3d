@@ -8,17 +8,50 @@ Title: Cyberpunk 2077 - Gun Archangel
 
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import * as THREE from 'three'
 
 export default function Gun(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/cyberpunk_2077_-_gun_archangel.glb')
   const { actions } = useAnimations(animations, group)
 
+  // Animate Start
+
   useEffect(() => {
       if (actions) {
         Object.values(actions).forEach((action) => action.play()) // Hammasini ishga tushiramiz
       }
     }, [actions])
+
+    // Delay animate
+
+    // useEffect(() => {
+    //   let intervalId
+    
+    //   const playAnimations = () => {
+    //     Object.values(actions).forEach((action) => {
+    //       action.stop()                     // <-- Stop first
+    //       action.reset()                    // <-- Reset it
+    //       action.setLoop(THREE.LoopOnce)    // <-- Only once
+    //       action.clampWhenFinished = true   // <-- Keep last frame
+    //       action.play()
+    //     })
+    //   }
+    
+    //   const initialDelay = setTimeout(() => {
+    //     playAnimations() // Play once after 5s
+    
+    //     intervalId = setInterval(() => {
+    //       playAnimations() // Then every 10 min
+    //     }, 200000)
+    //   }, 5000)
+    
+    //   return () => {
+    //     clearTimeout(initialDelay)
+    //     clearInterval(intervalId)
+    //     Object.values(actions).forEach((action) => action.stop())
+    //   }
+    // }, [actions])
 
     
   return (

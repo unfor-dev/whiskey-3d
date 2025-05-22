@@ -50,6 +50,20 @@ canvas{
     background-color: blue;    
     color: aqua;
 }
+.animate-bike-button button{
+    margin-top: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid blue;
+    cursor: pointer;
+    transition: 1s ease ;
+}
+.animate-bike-button button:hover{
+    border: 2px solid pink;
+    background-color: blue;    
+    color: aqua;
+}
 
 .Hero{
     display: flex;

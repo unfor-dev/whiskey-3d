@@ -24,8 +24,8 @@ export default function Experience() {
     return (
         <>
             {/* Button click animate */}
-            <Html position={[0, 2, 0]} center>
-                <button onClick={triggerBikeAnimation}>🚴‍♂️ Bosish</button>
+            <Html className='animate-bike-button' position={[0, 2, 0]} center>
+                <button onClick={triggerBikeAnimation}>Animate the bike</button>
             </Html>
 
 
